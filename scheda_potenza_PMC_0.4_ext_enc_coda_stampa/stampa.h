@@ -35,8 +35,10 @@ void STM_begin();
 
 void STM_abbassa();
 void STM_alza();
+bool STM_check_pre_stampa();
+void DIOCANE();
 inline bool STM_printer_ready();
-bool STM_print();
+bool STM_print(uint8_t id);
 
 void STM_check();
 

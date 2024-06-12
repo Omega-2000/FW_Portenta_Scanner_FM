@@ -50,14 +50,19 @@ void STM_begin() {
     USCITE_setDir(STM_PAP_END_PIN, 0);*/
 }
 
-inline bool STM_printer_ready() {
 
+
+bool STM_check_pre_stampa() {
+  return !STM_printer_ready();
+}
+
+inline bool STM_printer_ready() {
   STM_presence = INGRESSI_read(STM_PRES_PIN);
   // ready se è ferma, in posizione 0 e c'è l'etichetta
   return STM_presence;
 }
 
-bool STM_print() {
+bool STM_print(uint8_t id) {
   bool ret = 0;
   //if (STM_enabled) {
   if (STM_printer_ready()) {
@@ -81,6 +86,8 @@ bool STM_print() {
     Serial.println("Stampante non abilitata");
     }
     STM_enabled = 0; // al termine della stampa la disabilito*/
+
+  CAN_send_OK_stampa(id, ret);
   return ret;
 }
 
