@@ -25,7 +25,7 @@ void TELM_check() {
       TELM_out_state = !TELM_out_state;
       digital_outputs.set(TELM_TRIGGER_PIN, TELM_out_state);
       if (TELM_out_state) {
-        DEBUG("----> TRIGGER TELECAMERA MANIGLIE, impulso n°: " + String(TELM_pulse_count) + "\n");
+        DEBUG("----> TRIGGER TELECAMERA MANIGLIE, impulso n°: " + String(TELM_pulse_count)+"\n");
       } else {
         TELM_pulse_count++;
       }
