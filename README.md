@@ -11,7 +11,13 @@
 - Scaricare la versione del FW che si vuole caricare sulla scheda e aprire il file "___.ino" con Arduino IDE
 - Impostare correttamente i parametri presenti nel menù a tendina "Strumenti"/"Tools"
 
-![Strumenti](/immagini per istruzioni/Strumenti.png)
+![Strumenti](./immagini per istruzioni/Strumenti.png)
 
+- Selezionare la porta a cui è collegata la scheda
 - Cliccare su "Carica"/"Upload" e attendere il pop-up "Caricamento completato"
 
+**READ SERIAL**
+- Collegare al computer il programmatore seriale e ad esso collegare un cavetto sul pin gnd e un cavetto sul pin rx, di conseguenza collegare il primo cavetto su un pin gnd della scheda e il secondo all'rx della scheda (dovrebbe esserci un cavetto arancione coperto da una guaina, togliere la guaina e collegarsi lì)
+- Aprire Arduino IDE
+- Selezionare la porta del programmatore seriale
+- Aprire il monitor seriale e leggere i dati in arrivo
