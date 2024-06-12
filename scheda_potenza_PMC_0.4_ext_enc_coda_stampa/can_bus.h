@@ -41,6 +41,7 @@ void CAN_send_lunghezza_anta(uint8_t id, uint16_t len, uint32_t len_raw = 0);
 void CAN_send_stato_rullo(uint8_t st, uint8_t vel);
 void CAN_send_posizione_anta(uint8_t id, uint8_t ogg, uint8_t pos, uint32_t sp = 0);
 void CAN_send_stato_pulizia(uint8_t st);
+void CAN_send_OK_stampa(uint8_t id, bool st);
 void CAN_send_errore_stampa(uint8_t err);
 void CAN_send_avvio();
 void CAN_richiedi_step_pezzo(uint8_t a_id, uint32_t len);

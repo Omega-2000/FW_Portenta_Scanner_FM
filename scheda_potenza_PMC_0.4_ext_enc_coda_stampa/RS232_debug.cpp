@@ -36,7 +36,7 @@ void RS232_check() {
   if (millis() - RS232_last > RS232_send_interval) {
     RS232_last = millis();
 
-    String msg = "alive\n";
+    String msg = "\nalive\n";
     //msg += String(RS232_cnt++);
     //if (RS232_cnt > 9) RS232_cnt = 0;
 

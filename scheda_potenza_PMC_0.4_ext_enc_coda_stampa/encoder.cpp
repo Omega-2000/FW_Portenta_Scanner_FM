@@ -321,9 +321,16 @@ void ENC_check() {
       if ( new_distances[end_use - 1] >= ANT_queue[cur_anta].getEnd() ) { // verifico se ho superato il punto
         if (end_use == 4) { // print
           //stampo
-          STM_print();
+          STM_print(ANT_queue[cur_anta].getId());
         } else if (end_use < 5) { // punti senza fotocellule
-          CAN_send_posizione_anta(ANT_queue[cur_anta].getId(), 1, end_use); // invio messaggio canbus
+          bool err_pre_stampa = 0;
+          if (end_use == 3) { // pre stampa
+            if (!STM_check_pre_stampa()) {
+              CAN_send_errore_stampa(0x02);
+              err_pre_stampa = 1;
+            }
+          }
+          if (!err_pre_stampa) CAN_send_posizione_anta(ANT_queue[cur_anta].getId(), 1, end_use); // invio messaggio canbus
         } else  if (end_use == 5) { // punti con fotocellule -> fine guida
           if ((FC_last_dist_fc1_fall >= distance - ENC_POINTS_MARGIN) && (FC_last_dist_fc1_fall <= distance)) { // se l'evento è nelle tolleranze pezzo ok
             // tengo traccia del pezzo (non modifico nulla)
