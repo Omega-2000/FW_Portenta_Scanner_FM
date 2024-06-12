@@ -89,6 +89,7 @@ void loop() {
     CAN_send_stato_rullo(MAC_running, ENC_speed);
   }
 
+  MAC_FC_disable_check();
   FC_check();
   SOL_check();
   ENC_check();

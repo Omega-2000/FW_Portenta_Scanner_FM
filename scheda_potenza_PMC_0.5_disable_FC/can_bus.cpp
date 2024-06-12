@@ -220,7 +220,7 @@ void CAN_send_errore_stampa(uint8_t err) {
 
 void CAN_send_OK_stampa(uint8_t id, bool st) {
   uint8_t msg[8] = {0x09, id, st, 0x00, 0x00, 0x00, 0x00, 0x00};
-  CAN_sendMsgBuf(CAN_ERROR | CAN_myID, 0, 8, msg); // CAN_DATA prima , ho dovuto mettere CAN_ERROR perche su excel FM è stata messo come can_ERROR
+  CAN_sendMsgBuf(CAN_DATA | CAN_myID, 0, 8, msg);
 }
 
 void CAN_send_avvio() {

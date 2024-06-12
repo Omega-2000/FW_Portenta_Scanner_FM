@@ -43,13 +43,25 @@ bool FC_read(uint8_t n) {
 
 bool FC_read_all() {
   bool ch;
-  for (uint8_t i = 0; i < 2; i++) {
-    FC_state_old[i] = FC_state[i];
-    FC_state[i] = INGRESSI_read(FC_PINS[i]);
-    FC_rising[i] = INGRESSI_rising(FC_PINS[i]);
-    FC_falling[i] = INGRESSI_falling(FC_PINS[i]);
-    ch = FC_rising[i] | FC_falling[i];
+
+  FC_state_old[0] = FC_state[0];
+  if (MAC_FC_enabled) {
+    FC_state[0] = INGRESSI_read(FC_PINS[0]);
+    FC_rising[0] = INGRESSI_rising(FC_PINS[0]);
+    FC_falling[0] = INGRESSI_falling(FC_PINS[0]);
+  } else {
+    //FC_state[0] // non cambia
+    FC_rising[0] = 0;
+    FC_falling[0] = 0;
   }
+  ch = FC_rising[0] | FC_falling[0];
+
+  FC_state_old[1] = FC_state[1];
+  FC_state[1] = INGRESSI_read(FC_PINS[1]);
+  FC_rising[1] = INGRESSI_rising(FC_PINS[1]);
+  FC_falling[1] = INGRESSI_falling(FC_PINS[1]);
+  ch = FC_rising[1] | FC_falling[1];
+
   FC_state_old[2] = FC_state[2];
   FC_state[2] = !INGRESSI_read(FC_PINS[2]);
   FC_rising[2] = INGRESSI_falling(FC_PINS[2]);
@@ -67,8 +79,8 @@ void FC_check() {
   }
   if (FC_falling[0]) { //fotocellula di misura
     /*CAN_richiedi_step_pezzo();
-  }
-  if(lunghezza_step_ricevuta){*/
+      }
+      if(lunghezza_step_ricevuta){*/
     ENC_enqueue_end();
     lunghezza_step_ricevuta = 0;
     //--Serial.println("Fotocellula di misura fine");
