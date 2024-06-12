@@ -104,7 +104,8 @@ void ENC_enqueue_begin() {
     ENC_queue_begin_pulses = tmp;
     ENC_done = 1;
 
-    Anta a = Anta(ENC_queue_begin_pulses, 0, 1, 0, ++ANT_last_id);
+    if (++ANT_last_id == 0) ANT_last_id = 1;
+    Anta a = Anta(ENC_queue_begin_pulses, 0, 1, 0, ANT_last_id);
     ANT_enqueue(a);
 
     CAN_send_posizione_anta(ANT_last_id, 0, 0);
@@ -271,7 +272,7 @@ void ENC_check() {
             LAS_1_on();
           } else if (beg_use == 2) { // camera lato
             LAS_2_on();
-            TELM_start_pulse_train();   //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            TELM_start_pulse_train();
           } else if (beg_use == 3) { // pre stampante
           }
         } else if (beg_use == 5) { // punti con fotocellule -> fine guida

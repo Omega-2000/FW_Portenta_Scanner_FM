@@ -21,7 +21,7 @@
 #define ENC_POINTS_MARGIN     50
 #define ENC_POINT_CAMERA_TOP  100   // 0
 #define ENC_POINT_CAMERA_LAT  865   // 1
-#define ENC_POINT_PRE_PRINT   1370  // 2 (posizione di invio comando stampa per coda stampa)
+#define ENC_POINT_PRE_PRINT   1820//1770 (funziona ma è al limite) //1370 (deafult)  // 2 (posizione di invio comando stampa per coda stampa)
 #define ENC_POINT_PRINT       2170  // 3
 #define ENC_POINT_END_GUIDE   3160  // 4
 #define ENC_POINT_END_CONV    4980  // 5
