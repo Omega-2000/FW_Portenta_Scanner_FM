@@ -1,7 +1,7 @@
 # FW_Portenta_Scanner_FM
 
 **HARDWARE**
-- Scheda Arduino Portenta
+- Scheda Arduino "Portenta Machine Control"
 
 **UPLOAD FIRMWARE**
 - Collegarsi dal computer alla scheda tramite cavo usb
