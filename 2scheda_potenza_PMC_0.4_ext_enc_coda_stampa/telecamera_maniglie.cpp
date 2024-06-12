@@ -35,39 +35,3 @@ void TELM_check() {
     TELM_pulse_enabled = 0;
   }
 }
-
-/*#include <Arduino_MachineControl.h>
-using namespace machinecontrol;
-#include <stdint.h>
-
-
-#include "global_var_def.h"
-#include "telecamera_maniglie.h"
-
-bool TELM_pulse_enabled = 0;
-uint8_t TELM_pulse_count = 0;
-bool TELM_out_state = 0;
-uint32_t TELM_last_change = 0;
-
-void TELM_start_pulse_train() {
-  TELM_pulse_enabled = 1;
-  TELM_pulse_count = 0;
-}
-
-void TELM_check() {
-  if (TELM_pulse_enabled && (TELM_pulse_count < TELM_PULSE_COUNT)) {
-    if ((millis() - TELM_last_change) > (TELM_MS_PERIOD / 2)) {
-      if (!TELM_out_state) {
-        digital_outputs.set(TELM_TRIGGER_PIN, 1);
-        TELM_out_state = 1;
-      } else {
-        digital_outputs.set(TELM_TRIGGER_PIN, 0);
-        TELM_pulse_count++;
-        TELM_out_state = 0;
-      }
-      TELM_last_change = millis();
-    }
-  } else {
-    TELM_pulse_enabled = 0;
-  }
-}*/
