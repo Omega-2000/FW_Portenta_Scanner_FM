@@ -16,8 +16,14 @@ using namespace machinecontrol;
 
 
 bool MAC_running;
+bool MAC_FC_enabled = 0;
+bool MAC_FC_disable = 0;
+uint32_t MAC_FC_disable_time;
+uint32_t MAC_FC_disable_wait = 10000; // 10 sec
 
 void MAC_start(double sp) {
+  MAC_FC_enabled = 1;
+  MAC_FC_disable = 0;
   MAC_running = 1;
   MOT_start(sp, 0);
 }
@@ -25,6 +31,14 @@ void MAC_start(double sp) {
 void MAC_stop() {
   MAC_running = 0;
   MOT_stop();
+  MAC_FC_disable = 1;
+  MAC_FC_disable_time = millis();
+}
+
+void MAC_FC_disable_check(){
+  if (MAC_FC_disable && (millis() - MAC_FC_disable_time >= MAC_FC_disable_wait)){
+    MAC_FC_enabled = 0;
+  }
 }
 
 

@@ -23,7 +23,9 @@
 
 
 extern bool MAC_running;
+extern bool MAC_FC_enabled;
 
+void MAC_FC_disable_check();
 void MAC_start(double sp);
 void MAC_stop();
 void MAC_reset();
